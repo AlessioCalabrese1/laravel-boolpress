@@ -5,10 +5,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <router-link to="/" class="nav-link active" aria-current="page" href="#">Home</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <router-link to="/test" class="nav-link" href="#">Test</router-link>
                     </li>
                 </ul>
             </div>

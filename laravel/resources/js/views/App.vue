@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderComponent />
-    <HomeComponent />
+    <router-view></router-view>
   </div>
 </template>
     
