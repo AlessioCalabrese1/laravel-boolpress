@@ -2,7 +2,7 @@
     <section class="container">
         <div class="row">
             <div class="col-12">
-                <PostCard v-for="post in posts" :key="post.id" :post="post"/>
+                <PostCard v-for="post in posts" :key="post.id" :post="post" :showButtonActive="showButtonActive"/>
             </div>
         </div>
     </section>
@@ -19,7 +19,8 @@ export default {
             posts: [],
             currentPage: 1,
             lastPage: null,
-            loading: true
+            loading: true,
+            showButtonActive: true
         }
     },
     methods: {
