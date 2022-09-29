@@ -2,7 +2,8 @@
   <div class="container">
     <div class="row">
         <div class="col-12">
-            <PostCard :post="post" :showButtonActive="showButtonActive"/>
+            <LoaderComponent v-if="loading"/>
+            <PostCard :post="post" :showButtonActive="showButtonActive" v-if="!loading"/>
         </div>
     </div>
   </div>
@@ -11,8 +12,9 @@
 <script>
 import PostCard from '../components/PostCard.vue';
 import axios from 'axios';
+import LoaderComponent from '../components/LoaderComponent.vue';
 export default {
-    components: { PostCard },
+    components: { PostCard, LoaderComponent },
     data: function(){
         return{
             post: {},
@@ -26,6 +28,7 @@ export default {
             .then((response) => {
                 console.log(response.data.results);
                 this.post = response.data.results;
+                this.loading = false;
             }).catch((error) => {
                 console.warn(error)
             });

@@ -1,6 +1,7 @@
 <template>
     <section class="container">
-        <div class="row">
+        <LoaderComponent v-if="loading"/>
+        <div class="row" v-if="!loading">
             <div class="col-12">
                 <PostCard v-for="post in posts" :key="post.id" :post="post" :showButtonActive="showButtonActive"/>
             </div>
@@ -11,8 +12,9 @@
 <script>
 import PostCard from '../components/PostCard.vue';
 import axios from 'axios';
+import LoaderComponent from '../components/LoaderComponent.vue';
 export default {
-    components: { PostCard },
+    components: { PostCard, LoaderComponent },
 
     data: function(){
         return{
