@@ -2,6 +2,7 @@
     <section class="container">
         <LoaderComponent v-if="loading"/>
         <div class="row" v-if="!loading">
+            <router-link :to="{ name: 'post.create'}" class="btn btn-primary">Crea nuovo post</router-link>
             <div class="col-12">
                 <PostCard v-for="post in posts" :key="post.id" :post="post" :showButtonActive="showButtonActive"/>
             </div>
@@ -29,7 +30,7 @@ export default {
         getPosts(postPage = 1){
             axios.get(`http://127.0.0.1:8000/api/posts?page=${postPage}`)
             .then((response) => {
-                console.log(response.data.results.data);
+                // console.log(response.data.results.data);
                 this.posts = response.data.results.data;
                 this.loading = false;
             }).catch((error) => {

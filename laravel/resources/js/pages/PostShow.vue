@@ -26,7 +26,7 @@ export default {
         getSinglePost(){
             axios.get(`http://127.0.0.1:8000/api/posts/${this.$route.params.id}`)
             .then((response) => {
-                console.log(response.data.results);
+                // console.log(response.data.results);
                 this.post = response.data.results;
                 this.loading = false;
             }).catch((error) => {

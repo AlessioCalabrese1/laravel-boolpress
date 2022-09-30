@@ -4,10 +4,17 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
+    private $validationRules = [
+        'title' => 'required'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +49,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post();
+        $sentData = $request->validate($this->validationRules);
+        dd($sentData);
+        $sentData['user_id'] = Auth::id();
+        $sentData['date'] = Carbon::now();
+        // $sentData['img'] = Storage::put('storage', $sentData['img']);
+        $post = $post->create($sentData);
+        return response()->json([
+            'response' => true,
+            'results' => $post
+        ]);
     }
 
     /**

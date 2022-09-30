@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 import HomeComponent from './pages/HomeComponent.vue';
 import TestComponent from './pages/TestComponent.vue';
 import PostShow from './pages/PostShow.vue';
+import FormCreate from './pages/FormCreate.vue';
 
 const router = new VueRouter({
     mode: 'history',
@@ -25,7 +26,11 @@ const router = new VueRouter({
             name: 'post.show',
             component: PostShow
         },
+        {
+            path: '/postCreate',
+            name: 'post.create',
+            component: FormCreate
+        },
     ]
 });
-
 export default router
